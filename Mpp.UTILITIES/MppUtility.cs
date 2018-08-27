@@ -27,21 +27,7 @@ namespace Mpp.UTILITIES
             UTF8Encoding encoding = new UTF8Encoding();
             MD5CryptoServiceProvider encrypter = new MD5CryptoServiceProvider();
             hashBytes = encrypter.ComputeHash(encoding.GetBytes(strInput));
-
-            string decryptvaue = decrypt("0xE6E061838856BF47E1DE730719FB2609");
-
-
             return hashBytes;
-        }
-
-        public static string decrypt(string value)
-        {
-            MD5CryptoServiceProvider md5Hasher = new MD5CryptoServiceProvider();
-            byte[] hashedBytes = null;
-            UTF8Encoding encoder = new UTF8Encoding();
-            hashedBytes = md5Hasher.ComputeHash(encoder.GetBytes(value));
-            string strpa = hashedBytes.ToString();
-            return strpa;
         }
 
         // Convert date to DDD,MMM,dd,YYYY string format

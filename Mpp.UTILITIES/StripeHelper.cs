@@ -155,7 +155,7 @@ namespace Mpp.UTILITIES
                 StripeCustomer stripeCustomer = customerService.Get(custId); //customer added
                 return stripeCustomer;
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }

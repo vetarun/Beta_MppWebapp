@@ -1,6 +1,5 @@
 ﻿using Mpp.BUSINESS;
 using Mpp.BUSINESS.DataLibrary;
-using Mpp.BUSINESS.DataModel;
 using Mpp.UTILITIES;
 using Mpp.UTILITIES.BO;
 using Mpp.WEB.Models;
@@ -50,19 +49,6 @@ namespace Mpp.WEB.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            //var respo = new object();
-            //BUSINESS.ReportsAPI api = new BUSINESS.ReportsAPI();
-            //var Auth = new AuthorizationModel()
-            //{
-            //    access_token = Convert.ToString("Atza|IwEBIL6K_WdpMGNTXbpsP16sdaGvpJjLCHpcSJ8gWvnV3d6IUlboTMScWllUrmGtj_tKVfNyyKbfz11X_-kUpcrdhU_h9VKguKjYsJa33bRNAyuNTXwaPyntwLuXBllsShxZ0ye1bUS7L8SmJ_MikxWSCu_G0Zp_hgC7FR6vOal4dU6ZjeU5xATkEoW0RGv2EOcfU5cY8xmLdWtiszYTJs53Z5rF2aav9FSjBxz0-HcuTXMKRGM2IC7u7LUqNt19ptv9pDPvQiQ-47sJE7Wb6Yend7oEwVrxgZvzEzfdrLnluxYnf8T6wkICzyw7MoWtnKdE5DJzqngVMANWiGBbt98XclhiL7v7K7n88Scl8qYt_1tZW2QcrLrm3KO8RunpAU4z7JJE9V1YBw-xY7_cWbueI_tUwObwsQboCL0Crh6CNjHX5Mb7gBk0KJ-GshBFyxPGJ490uPDHC0tzj0aK_8-VCrKbqOVi2_nl8lCzF6dfMJM4_hQLEVnVthABdjjM3R9INU5TKmiintqrjEdoAixsDwicHV6tm9TPzBF09BTTScGqjzkipZqScfCu5MNjLU1Ykquc_fdfB4PE8yZ5nyBvywm4bPea2cat9AFGbvHAJrDKmg"),
-            //    refresh_token = Convert.ToString("Atzr|IwEBIGHrnj15YSEeavfPRDzCTHg7Iy_JIEqcDt3EvhlBlhtqnGOa05WDNJSIX8Uqk4nkRyhPYkuYO0z9xKBIMKu32FIVNv3A7viV-DWA8dc_rQxxmgCu3OjzN8WmSvOU8U4VhuNH46oILiXXFUdKE5UGEzeLF63XVbiaiUgFvELFLKWNeh6zZOlzbOY5XsOsCDFrSHcnosFByyxTtBwbLdodGtgSrCACuKKgRJLGza1r61eoD9GR7L6CoM6VxLEPSRhaBiKfCqFwQ31GEf23cnfhjT3h5u3TiDXDZ9D61pLX5L0okq1iSOEyVcelg2VJ7q5vRLipAORrIWbQOGXr7TuYuzcCX36HFmEouYNnxHpuLMM90oPLC0EeF8u2qovJCn0wEcl361wAW3Hcu5sM1LbxVsIjskjqlMFUAGoz5qbgro-YnSGcO4Axk86Ai01_DVYcn-nqiPX_0UAqqJKQoGQNBr8NLXurwZ6paVrxaWImCwRfDrHTqb5l71BNGuqRtA7VW7lE3TvlNm77sxL6x7b7idpCb1JsT7El4JP9knn1UhDfg4JxDuf0krSts8JvZbfQEujddhcytogSrZYqOsOWekih"),
-            //    token_type = Convert.ToString("Bearer"),
-            //    expires_in = Convert.ToInt32("3600")
-            //};
-
-            //respo = api.GetNewtoken(SessionData.UserID, ref Auth);
-
-            //   StripeServices.RenewTrialPlan();
             return View(new LoginViewModel());
         }
 

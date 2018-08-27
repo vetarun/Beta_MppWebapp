@@ -23,7 +23,6 @@ namespace Mpp.BUSINESS.DataLibrary
         #endregion
 
         #region Constructors
-
         #endregion
 
         #region Public Methods
@@ -256,39 +255,6 @@ namespace Mpp.BUSINESS.DataLibrary
                 cmd.CommandText = "Sbsp_VerifyUserLogin";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@UserID", SqlDbType.VarChar, 50).Value = UserID;
-                cmd.Parameters.Add("@Password", SqlDbType.Binary, 16).Value = MppUtility.EncryptPassword(Password);
-                DataAccess.ExecuteCommand(cmd);
-            }
-            catch (SqlException ex)
-            {
-                res = ex.Message;
-                LogFile.WriteLog(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                res = ex.Message;
-                LogFile.WriteLog(ex.Message);
-            }
-            finally
-            {
-                if (cmd != null)
-                {
-                    cmd.Dispose();
-                }
-            }
-            return res;
-        }
-
-        //test function
-        public String updatepass(string emailid, String Password)
-        {
-            String res = "";
-            SqlCommand cmd = new SqlCommand();
-            try
-            {
-                cmd.CommandText = "Sbsp_updatepass";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@emailid", SqlDbType.VarChar, 50).Value = emailid;
                 cmd.Parameters.Add("@Password", SqlDbType.Binary, 16).Value = MppUtility.EncryptPassword(Password);
                 DataAccess.ExecuteCommand(cmd);
             }

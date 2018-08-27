@@ -223,8 +223,8 @@ namespace Mpp.BUSINESS
                             if (!(DateTime.Now < TokenExpiryTime) && !String.IsNullOrWhiteSpace(_profileId))
                                 authres = UpdateAccessToken(UserID, ref auth);
 
-                            if (String.IsNullOrWhiteSpace(authres) && !String.IsNullOrWhiteSpace(_profileId))
-                            {
+                            //if (String.IsNullOrWhiteSpace(authres) && !String.IsNullOrWhiteSpace(_profileId))//--comment by hari
+                            //{
                                 foreach (DataRow row in dtbl.Rows)
                                 {
                                     int ReportID = Convert.ToInt32(row["ReportID"]);
@@ -236,7 +236,7 @@ namespace Mpp.BUSINESS
                                     else
                                         SetSearchTermReport(UserID, _profileId, ReportID, ReportDate, Status1, auth);
                                 }
-                            }
+                           // }
                         }
                     }
                 }
@@ -356,50 +356,8 @@ namespace Mpp.BUSINESS
             }
         }
 
-        public object GetNewtoken(int UserId, ref AuthorizationModel authres)
-        {
-            string msg = "";
-            try
-            {
-                //string clientkey = "amzn1.application-oa2-client.6c0020c429cd4772a21802ed9bddcf05";
-                //string clientSecretkey = "0cb79a3f2b1f9e9e651cd47dc79f6dd3f696f5a42b0624fb50dc595324762434";
-                var _api = "https://advertising-api-test.amazon.com/";
-                ////var route = "v1/profiles";
-                ////hc.BaseAddress = new Uri(_api);
-                ////String Auth_Token = authres.refresh_token.PadRight(7) + authres.access_token;
-                ////hc.DefaultRequestHeaders.Add("Authorization", Auth_Token);
-                ////var res = hc.GetAsync(route).Result;
-
-                HttpClient hc = new HttpClient();
-                //var route = "/auth/o2/token";
-                var route = "v1/profiles";
-                hc.BaseAddress = new Uri(_api);
-                String content = "grant_type=refresh_token&client_id=" + _clientkey + "&client_secret=" + _clientSecretkey + "&refresh_token=" + authres.refresh_token;
-                HttpContent httpContent = new StringContent(content);
-                httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");
-                var res = hc.PostAsync(route, httpContent).Result;
-                if (res.IsSuccessStatusCode)
-                {
-                    var res1 = res.Content.ReadAsStringAsync().Result;
-                    authres = Newtonsoft.Json.JsonConvert.DeserializeObject<AuthorizationModel>(res1);
-                    msg = APIData.UpdateAccessTokenData(UserId, authres.access_token, authres.refresh_token, authres.token_type, authres.expires_in);
-                }
-                else
-                {
-                    msg = "Failed - AccessToken";
-                    LogAPI.WriteLog("UpdateAccessToken-UserId:" + UserId + ": " + res.ReasonPhrase);
-                }
-            }
-            catch (Exception ex)
-            {
-                msg = ex.Message;
-                LogAPI.WriteLog("UpdateAccessToken-UserId:" + UserId + ": " + msg);
-            }
-            return msg;
-        }
-
-            //load campaigns on demand
-            public object GetNewCampaignsOnDemand(int userId, DateTime LastUpdateTime, String ProfileId, AuthorizationModel auth)
+        //load campaigns on demand
+        public object GetNewCampaignsOnDemand(int userId, DateTime LastUpdateTime, String ProfileId, AuthorizationModel auth)
         {
             var msg = "";
             string _profileId = ProfileId;
